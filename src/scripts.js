@@ -73,42 +73,30 @@ function formatDay(timestamp) {
     "Friday",
     "Saturday",
   ];
+  let day = days[date.getDay()];
 
-  return days[date.getDay()];
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hours}:${minutes}`;
 }
 
-function getForecast(city) {
-  let apiKey = "atfbe5f85e4440e083c34b77o4ad7e8d";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios(apiUrl).then(displayForecast);
+function searchCity(city) {
+  let apiKey = "b2a5adcct04b33178913oc335f405433";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(refreshWeather);
 }
 
-function displayForecast(response) {
-  let days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  let forecastHtml = "";
-  response.data.daily.forEach(function (day, index) {
-    if (index < 6) {
-      forecastHtml =
-        forecastHtml +
-        `
-     <div class="weather-forecast-day">
-       <div class="weather-forecast-date"> ${formatDay(day.time)}</div>
-       
-       <img src=" ${day.condition.icon_url}"class="weather-forecast-icon" 
-       <div class="weather-forecast-temperatures">
-         <div class="weather-forecast-temperature">
-           <strong>${Math.round(day.temperature.maximum)}°</strong>
-         </div>
-         <div class="weather-forecast-temperature">${Math.round(
-           day.temperature.minimum
-         )}°C</div>
-       </div>
-      </div>`;
-    }
-  });
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = forecastHtml;
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form-input");
+
+  searchCity(searchInput.value);
 }
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 displayForecast();
 searchCity("CapeTown");
