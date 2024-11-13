@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,9 +10,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
-    <title>weather-app</title>
-</head>
-<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>weather-App</title>
+  </head>
+  <body>
     <div class="weather-app">
       <header>
         <form class="search-form" id="search-form">
@@ -23,33 +22,40 @@
             placeholder="Enter a city.."
             required
             id="search-form-input"
-            class="search-form-input"/>
-        <input type="submit" value="Search" class="search-form-button" />
-      </form>
-    </header>
-    <main>
-       <div class="weather-app-data"></div>
+            class="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-button" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-data">
           <div>
             <h1 class="weather-app-city" id="city"></h1>
             <p class="weather-app-details">
-              Tuesday 14:49, <span id="description"></span>
+              <span id="time"></span>,
+              <span id="description"></span>
               <br />
-              Humidity: <strong>66%</strong>, Wind: <strong>3.13km/h</strong>
+              Humidity: <strong id="humidity"></strong>, Wind:
+              <strong id="wind-speed"></strong>
             </p>
           </div>
           <div class="weather-app-temperature-container">
-            <div class="weather-app-icon">🌤️</div>
+            <div id="icon"></div>
             <div class="weather-app-temperature" id="temperature"></div>
             <div class="weatehr-app-unit">°C</div>
           </div>
         </div>
-        
-    </main>
+      </main>
+
+
+
+
     <footer>
         coded by <a href="https://github.com/Audrey-a15a" target="_blank"> Andani T</a>
         code hosted on  <a href="https://github.com/Audrey-a15a/weather-check" target="_blank">github </a>  
         and website hosted  <a href="https://audrey-weather-app.netlify.app/" target="_blank"> on netlify</a>
     </footer>
-    
+     </div>
+    <script src="src/index.js"></script>
 </body>
 </html>
