@@ -103,7 +103,7 @@ function displayForecast(response) {
            day.temperature.minimum
          )}°C</div>
        </div>
-     </div>`;
+      </div>`;
     }
   });
   let forecastElement = document.querySelector("#forecast");
@@ -111,3 +111,4 @@ function displayForecast(response) {
 }
 
 displayForecast();
+searchCity("CapeTown");
